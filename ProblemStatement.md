@@ -1,6 +1,6 @@
 # Problems
 
-#Question 
+Question 
 I.
 1. Use the requests module to download a file from the internet and determine the type of file
 (html/pdf/doc/video) downloaded. Assume user provided input URL
@@ -40,13 +40,38 @@ Example header:
 
 3.
 The header of a url has a standard type of structure, some have a content-length and some have transfer-encoding .
+
 Content-length : determines the byte length of the request/response body.
 Transfer-encoding : data is transmitted in a chunked manner
 
 
-When content-length is in the header then the time can be estimated,but then also for estimating the time for chunk by chunk the time increases once the downloading starts,so that will be an approximately determined value for the time estimation.
+When content-length is in the header then the time can be estimated,but then also for estimating the time for chunk by chunk the time fluctuates as the downloading starts,so that will be an approximately determined value for the time estimation.
+And we the estimated time value exceeds 60 secs than the file downloading is skipped.
+
+So, downloading time can be determined approximately for every small lapse and small chunk of data downloaded.
+Also, 
+```python
+r = requests.head(url,stream=True)
+```
+
+helps just to get the header information without downloading the data.So, an estimation for the downloading can be given.
+Although, the time may varry a lot on the base of internet speed and bandwith.
 
 
+II.
+
+For Problem 2 the "re" module is used so as to check the strength oof the individual passwords written in comma separated string.
+
+Here,
+
+```
+Regex Explained is used: ('^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$&]).*$')
+
+- At least 1 small case letter      -   (?=.*[a-z])
+- At least 1 upper case letter      -   (?=.*[A-Z])
+- At least 1 number                 -   (?=.*\d)
+- One character from @#$&.          -   (?=.*[@#$&])
+- 6 ≤ length                        -   (?=.{6,})
 
 
-
+```
