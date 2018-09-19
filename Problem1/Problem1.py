@@ -1,4 +1,5 @@
-import requests
+#!/usr/bin/python                                       # for linux supportimport requests
+
 import sys
 import time
 
